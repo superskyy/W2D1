@@ -7,7 +7,6 @@ function getAndPrintHTMLChunks () {
     path: '/http-examples/step1.html'
   };
 
-  /* Add your code here */
   https.get(requestOptions, function (response) {
   	if(response.statusCode !== 200) {
   		console.log('Request Failed with Status Code ' + response.statusCode);
@@ -22,7 +21,7 @@ function getAndPrintHTMLChunks () {
 	});
 	
 	response.on('end', function(){
-	  console.log('Chunk Received. Length:');
+	  console.log('\n' + 'Chunk Received.' + '\n');
 	});
   });
 }
