@@ -1,7 +1,8 @@
 var https = require('https'); 
 
-function getHTML (options, callback) {
-	https.get(requestOptions, function (response) {
+module.exports = function getHTML (options, callback) {
+    /* Your code here */
+    https.get(options, function (response) {
   	if(response.statusCode !== 200) {
   		console.log('Request Failed with Status Code ' + response.statusCode);
   		return;
@@ -18,14 +19,5 @@ function getHTML (options, callback) {
 	  	console.log('Chunk Received.');
 	});
   });
-}
-
-function printHTML (html) {
-  console.log(html);
-}
-
-var requestOptions = {
-  host: 'sytantris.github.io',
-  path: '/http-examples/step4.html'
 };
-getHTML(requestOptions, printHTML);
+
