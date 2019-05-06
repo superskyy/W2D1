@@ -9,15 +9,18 @@ function getAndPrintHTMLChunks () {
 
   /* Add your code here */
   https.get(requestOptions, function (response) {
+  	if(response.statusCode !== 200) {
+  		callback(new Error('Request Failed with Status Code ' + response.statusCode), null);
+  		return;
+  	}
 
-	  response.setEncoding('utf8');
-
-	  response.on('data', function(data) {
-	  	console.log('Chunk Received. Length:', data.lenth);
-	  })
-
-	  response.on('end', function(){
-	  	console.log('Response stream complete');
-	  });
+  	var body = '';
+	response.setEncoding('utf8');
+	response.on('data', function(chunk) {
+	  	body += chunk;
+	});
+	response.on('end', function(){
+	  callback(null, body);
+	});
   });
 }
