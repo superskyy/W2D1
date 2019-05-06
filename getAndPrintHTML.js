@@ -21,7 +21,7 @@ function getAndPrintHTML () {
 	});
 	
 	response.on('end', function(){
-		console.log(body);
+		console.log('\n' + body + '\n');
 	  	console.log('Chunk Received.');
 	});
   });
