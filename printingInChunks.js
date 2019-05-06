@@ -17,7 +17,7 @@ function getAndPrintHTMLChunks () {
 	response.setEncoding('utf8');
 	response.on('data', function(chunk) {
 	  	body += chunk;
-	  	console.log(body);
+	  	console.log('\n' + body + '\n');
 	});
 	
 	response.on('end', function(){
